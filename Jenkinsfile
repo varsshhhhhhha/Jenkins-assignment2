@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     echo "Running tests..."
-                    sh "docker run --rm -w /app ${DOCKER_IMAGE}:latest pytest"
+                    sh "docker run --rm -w /c/app varsshhhhhhha/flask-app:latest pytest"
                 }
             }
         }
