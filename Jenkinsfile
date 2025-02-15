@@ -51,7 +51,6 @@ pipeline {
                 script {
                     echo "Running tests..."
                     sh "docker run --rm -w /app ${DOCKER_IMAGE}:latest pytest"
-                    }
                 }
             }
         }
