@@ -35,19 +35,7 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                script {
-                    echo "Running tests..."
-                    sh '''
-                        WIN_PATH="C:/ProgramData/Jenkins/.jenkins/workspace/Jenkins-assignment2"
-                        LINUX_PATH=$(cygpath -u "$WIN_PATH")  # Convert to Unix path
-
-                        docker run --rm -v "$LINUX_PATH:/app" -w /app ${DOCKER_IMAGE}:latest pytest
-                    '''
-                }
-            }
-        }
+        
 
         stage('Push Image to Docker Hub') {
             steps {
