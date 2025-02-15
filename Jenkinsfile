@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     echo "Running tests inside the container..."
-                    docker.image("${DOCKER_IMAGE}:latest").inside {
+                    docker.image("${DOCKER_IMAGE}:latest").inside("--workdir /app") { 
                         sh "pytest || { echo 'Tests failed'; exit 1; }"
                     }
                 }
