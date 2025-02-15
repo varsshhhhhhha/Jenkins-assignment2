@@ -38,10 +38,8 @@ pipeline {
         stage('Run Tests') {
             steps {
                 script {
-                    echo "Running tests inside the container..."
-                    docker.image("${DOCKER_IMAGE}:latest").inside("--workdir /app") { 
-                        sh "pytest || { echo 'Tests failed'; exit 1; }"
-                    }
+                    echo "Running tests..."
+                    sh "docker run --rm -w /app ${DOCKER_IMAGE}:latest pytest"
                 }
             }
         }
@@ -49,8 +47,10 @@ pipeline {
         stage('Push Image to Docker Hub') {
             steps {
                 script {
-                    echo "Running tests..."
-                    sh "docker run --rm -w /app ${DOCKER_IMAGE}:latest pytest"
+                    echo "Pushing Docker image to Docker Hub..."
+                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
+                        docker.image("${DOCKER_IMAGE}:latest").push()
+                    }
                 }
             }
         }
