@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     echo "Running tests..."
-                    sh "docker run --rm -w /c/app varsshhhhhhha/flask-app:latest pytest"
+                    sh "docker run --rm -v /c/ProgramData/Jenkins/.jenkins/workspace/Jenkins-assignment2:/app -w /app varsshhhhhhha/flask-app:latest pytest"
                 }
             }
         }
