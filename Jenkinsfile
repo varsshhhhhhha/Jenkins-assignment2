@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "your-dockerhub-username/flask-app"
+        DOCKER_IMAGE = "varsshhhhhhha/flask-app"
         DOCKER_CREDENTIALS_ID = "Docker"
     }
 
     stages {
         stage('Checkout Code') {
             steps {
-                git credentialsId: 'github-credentials', url: 'https://github.com/varsshhhhhhha/Jenkins-assignment2.git', branch: 'main'
+                git credentialsId: 'a8736c91-7400-45a2-ad60-a4e98dfa4bda', url: 'https://github.com/varsshhhhhhha/Jenkins-assignment2.git', branch: 'main'
             }
         }
 
