@@ -2,7 +2,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-print("New change to trigger Jenkins")
+print("New change to trigger Jenkins assignment")
 
 @app.route('/')
 def home():
