@@ -49,9 +49,8 @@ pipeline {
         stage('Push Image to Docker Hub') {
             steps {
                 script {
-                    echo "Pushing Docker image to Docker Hub..."
-                    docker.withRegistry('https://index.docker.io/v1/', DOCKER_CREDENTIALS_ID) {
-                        docker.image("${DOCKER_IMAGE}:latest").push()
+                    echo "Running tests..."
+                    sh "docker run --rm -w /app ${DOCKER_IMAGE}:latest pytest"
                     }
                 }
             }
